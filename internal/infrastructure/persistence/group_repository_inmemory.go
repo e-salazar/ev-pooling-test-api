@@ -16,6 +16,11 @@ func NewGroupRepositoryInMemory() group.GroupRepository {
 }
 
 func (repository *GroupRepositoryInMemory) Add(group *group.Group) error {
+	for _, g := range repository.groups {
+		if g.ID == group.ID {
+			return errors.New("group already exists")
+		}
+	}
 	repository.groups = append(repository.groups, group)
 	return nil
 }

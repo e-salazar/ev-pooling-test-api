@@ -74,8 +74,17 @@ func (handler *VehicleHandler) AddGroup(context *gin.Context) {
 
 	group := converters.ToGroupEntity(groupDTO)
 
+	if found := handler.groupService.GetGroupByID(group.ID); found != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "group already exists"})
+		return
+	}
+
+	if found, _ := handler.journeyService.GetInfoByGroupID(group.ID); found {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "group already exists"})
+		return
+	}
 	if !handler.groupService.AddGroup(group) {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "adding group failed"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "adding group failed"})
 		return
 	}
 
