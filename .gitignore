@@ -23,3 +23,12 @@ go.work.sum
 
 # env file
 .env
+
+# Mac files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# Go debug files
+__debug_bin*
