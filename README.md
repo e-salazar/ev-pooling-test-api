@@ -13,7 +13,7 @@ This project follows Domain-Driven Design (DDD) principles and uses Hexagonal Ar
 
 ## API
 
-### GET /status
+### GET http://localhost:8080/api/v1/status
 
 Indicate the service has started up correctly and is ready to accept requests.
 
@@ -21,7 +21,7 @@ Responses:
 
 * **200 OK** When the service is ready to receive requests.
 
-### PUT /evs
+### PUT http://localhost:8080/api/v1/evs
 
 Load the list of available EVs in the service and remove all previous data
 (existing journeys and EVs). This method may be called more than once during
@@ -52,7 +52,7 @@ Responses:
 * **400 Bad Request** When there is a failure in the request format, expected
   headers, or the payload can't be unmarshalled.
 
-### POST /journey
+### POST http://localhost:8080/api/v1/journey
 
 A group of people requests to perform a journey.
 
@@ -75,7 +75,7 @@ Responses:
 * **400 Bad Request** When there is a failure in the request format or the
   payload can't be unmarshalled.
 
-### POST /dropoff
+### POST http://localhost:8080/api/v1/dropoff
 
 A group of people requests to be dropped off whether they traveled or not.
 
@@ -98,7 +98,7 @@ Responses:
 * **400 Bad Request** When there is a failure in the request format or the
   payload can't be unmarshalled.
 
-### POST /locate
+### POST http://localhost:8080/api/v1/locate
 
 Given a group ID such as `ID=X`, return the car the group is traveling
 with, or no car if they are still waiting to be served.
