@@ -17,6 +17,18 @@ func NewGroupService(repository group.GroupRepository) *GroupService {
 	}
 }
 
+func (service *GroupService) GetGroupByID(id int) *group.Group {
+	service.mutex.Lock()
+	defer service.mutex.Unlock()
+
+	group, err := service.repository.FindById(id)
+	if err != nil {
+		return nil
+	}
+
+	return group
+}
+
 func (service *GroupService) GetAllGroups() []*group.Group {
 	service.mutex.Lock()
 	defer service.mutex.Unlock()

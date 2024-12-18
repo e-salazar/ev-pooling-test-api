@@ -10,6 +10,11 @@ type MockGroupService struct {
 	mock.Mock
 }
 
+func (mock *MockGroupService) GetGroupByID(id int) *group.Group {
+	args := mock.Called(id)
+	return args.Get(0).(*group.Group)
+}
+
 func (mock *MockGroupService) GetAllGroups() []*group.Group {
 	args := mock.Called()
 	return args.Get(0).([]*group.Group)

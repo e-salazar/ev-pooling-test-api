@@ -5,4 +5,5 @@ type GroupService interface {
 	AddGroup(group *Group) bool
 	RemoveGroupByID(id int) bool
 	RemoveAll() bool
+	GetGroupByID(id int) *Group
 }
