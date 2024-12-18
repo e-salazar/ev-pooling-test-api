@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	v1 "ev-pooling-test-api/internal/infrastructure/api/v1"
 
-	v1 "ev-pooling-test-api/api/v1"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
