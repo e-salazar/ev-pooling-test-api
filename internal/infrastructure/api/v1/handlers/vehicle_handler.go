@@ -27,8 +27,6 @@ func NewVehicleHandler(vehicleService vehicle.VehicleService, groupService group
 
 func (handler *VehicleHandler) Status(context *gin.Context) {
 	context.String(http.StatusOK, "")
-
-	handler.journeyService.Status()
 }
 
 func (handler *VehicleHandler) UpdateVehicles(context *gin.Context) {
@@ -61,8 +59,6 @@ func (handler *VehicleHandler) UpdateVehicles(context *gin.Context) {
 	}
 
 	context.String(http.StatusOK, "")
-
-	handler.journeyService.Status()
 }
 
 func (handler *VehicleHandler) AddGroup(context *gin.Context) {
@@ -88,13 +84,9 @@ func (handler *VehicleHandler) AddGroup(context *gin.Context) {
 		return
 	}
 
-	handler.journeyService.Status()
-
 	handler.journeyService.CreateJourneys()
 
 	context.String(http.StatusOK, "")
-
-	handler.journeyService.Status()
 }
 
 func (handler *VehicleHandler) DropOffGroup(context *gin.Context) {
@@ -124,13 +116,9 @@ func (handler *VehicleHandler) DropOffGroup(context *gin.Context) {
 		}
 	}
 
-	handler.journeyService.Status()
-
 	handler.journeyService.CreateJourneys()
 
 	context.String(http.StatusOK, "")
-
-	handler.journeyService.Status()
 }
 
 func (handler *VehicleHandler) LocateGroup(context *gin.Context) {
@@ -154,6 +142,4 @@ func (handler *VehicleHandler) LocateGroup(context *gin.Context) {
 		// Not found
 		context.String(http.StatusNotFound, "")
 	}
-
-	handler.journeyService.Status()
 }

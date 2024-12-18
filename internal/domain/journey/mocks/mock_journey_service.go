@@ -11,10 +11,6 @@ type MockJourneyService struct {
 	mock.Mock
 }
 
-func (m *MockJourneyService) Status() {
-	m.Called()
-}
-
 func (m *MockJourneyService) GetAllJourneys() []*journey.Journey {
 	args := m.Called()
 	return args.Get(0).([]*journey.Journey)

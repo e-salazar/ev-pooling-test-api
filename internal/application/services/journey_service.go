@@ -4,7 +4,6 @@ import (
 	"ev-pooling-test-api/internal/domain/group"
 	"ev-pooling-test-api/internal/domain/journey"
 	"ev-pooling-test-api/internal/domain/vehicle"
-	"fmt"
 	"sync"
 )
 
@@ -21,27 +20,6 @@ func NewJourneyService(repository journey.JourneyRepository, vehicleService vehi
 		vehicleService: vehicleService,
 		groupService:   groupService,
 		mutex:          &sync.Mutex{},
-	}
-}
-
-func (service *JourneyService) Status() {
-	// Print available vehicles
-	fmt.Println("------------------------------")
-	fmt.Println("Available vehicles:", len(service.vehicleService.GetAllVehicles()))
-	for _, vehicle := range service.vehicleService.GetAllVehicles() {
-		fmt.Println(vehicle)
-	}
-
-	// Print waiting groups
-	fmt.Println("Waiting groups:", len(service.groupService.GetAllGroups()))
-	for _, group := range service.groupService.GetAllGroups() {
-		fmt.Println(group)
-	}
-
-	// Print current journeys
-	fmt.Println("Current journeys:", len(service.GetAllJourneys()))
-	for _, journey := range service.GetAllJourneys() {
-		fmt.Println("Vehicle:", journey.Vehicle, "Group:", journey.Group)
 	}
 }
 

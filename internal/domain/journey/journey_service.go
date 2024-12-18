@@ -1,7 +1,6 @@
 package journey
 
 type JourneyService interface {
-	Status()
 	GetAllJourneys() []*Journey
 	AddJourney(journey *Journey) bool
 	GetJourneyByGroupID(groupID int) *Journey
